@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="SimpleWebBrowser.Views.MainWindow"
+        Title="SimpleWebBrowser"
+        Width="900" Height="600"
+        FontFamily="Segoe UI">
+    
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BorderBrush" Value="#388E3C"/>
+        </Style>
+        
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#040000ff"/>
+            <Setter Property="BorderBrush" Value="#BDBDBD"/>
+            
+        </Style>
+    </Window.Styles>
+
+    <DockPanel Background="#F5F5F5">
+        <!-- Toolbar -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" 
+                   Background="#3F51B5" Height="50">
+            <Button Content="🏠 Home" Command="{Binding GoHomeCommand}" 
+                    Width="80" FontWeight="Bold"/>
+            <Button Content="⭐ Set Home" Command="{Binding SetHomeCommand}" 
+                    Width="100" Margin="10,0"/>
+            <TextBox Text="{Binding Address}" Width="500" 
+                     VerticalAlignment="Center" FontSize="14"/>
+            <Button Content="🔍 Go" Command="{Binding NavigateCommand}" 
+                    Width="60" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom" Background="#E0E0E0" 
+                Height="25" Padding="5">
+            <TextBlock Text="{Binding Status}" 
+                       VerticalAlignment="Center"
+                       Foreground="#212121"/>
+        </Border>
+
+        <!-- Content Area -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <TextBox Text="{Binding Content}" IsReadOnly="True" 
+             AcceptsReturn="True" TextWrapping="Wrap"
+             FontFamily="Consolas" FontSize="12"
+             Background="White" BorderThickness="0"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
